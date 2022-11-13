@@ -1,2 +1,3 @@
-# Sistema-de-login-Python
- Sistema de login feito em python
+# Sistema de login com Python
+
+Status: Em desenvolvimento
