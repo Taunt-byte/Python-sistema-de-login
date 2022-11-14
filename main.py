@@ -12,7 +12,7 @@ jan.resizable(width=False,height=False)
 
 # Inserindo Imgs
 
-
+logo = PhotoImage(file="")
 
 # Basicamente o separador da janela
 
