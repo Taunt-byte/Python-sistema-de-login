@@ -1,30 +1,42 @@
-#import das bibliotecas
-from tkinter import *
-from tkinter import messagebox
+import tkinter as tk
 
-class app():
-    # Criador da Janela
+# Banco de dados simulado para usuários
+database = {
+    'usuario1': 'senha1',
+    'usuario2': 'senha2',
+    'usuario3': 'senha3'
+}
 
-    jan = Tk()
-    jan.title("DP System - Acess")
-    jan.geometry("600x300")
-    jan.configure(background="black")
-    jan.resizable(width=False,height=False)
+def fazer_login():
+    username = username_entry.get()
+    password = password_entry.get()
 
-    # Inserindo Imgs
+    # Verifica se o usuário existe no banco de dados e a senha está correta
+    if username in database and database[username] == password:
+        result_label.config(text="Login bem-sucedido!", fg="green")
+    else:
+        result_label.config(text="Credenciais inválidas.", fg="red")
 
-    logo = PhotoImage(file="img/logo.jpg")
+# Cria a janela
+window = tk.Tk()
+window.title("Sistema de Login")
+window.geometry("300x200")  # Define as dimensões da janela
 
-    # Basicamente o separador da janela
+# Cria os widgets
+username_label = tk.Label(window, text="Nome de usuário:", font=("Arial", 12))
+username_entry = tk.Entry(window, font=("Arial", 12))
+password_label = tk.Label(window, text="Senha:", font=("Arial", 12))
+password_entry = tk.Entry(window, show="*", font=("Arial", 12))
+login_button = tk.Button(window, text="Login", command=fazer_login, font=("Arial", 12), bg="blue", fg="white")
+result_label = tk.Label(window, text="", font=("Arial", 12))
 
-    LeftFrame = Frame(jan, width=200, height=300,bg="Blue",relief="raise")
-    LeftFrame.pack(side=LEFT)
+# Posiciona os widgets na janela
+username_label.pack(pady=10)
+username_entry.pack()
+password_label.pack(pady=10)
+password_entry.pack()
+login_button.pack(pady=10)
+result_label.pack()
 
-    RightFrame= Frame(jan, width=395, height=300,bg="Blue",relief="raise")
-    RightFrame.pack(side=RIGHT)
-
-    LogoLabel = Label(LeftFrame, image=logo, bg="Blue")
-
-    # Chamada de funções
-    jan.mainloop()
-app()
+# Inicia o loop principal da janela
+window.mainloop()
